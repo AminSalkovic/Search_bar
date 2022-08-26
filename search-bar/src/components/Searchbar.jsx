@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import './Searchbar.css'
 import Axios from 'axios'
 const Searchbar = () => {
     
@@ -21,7 +23,6 @@ const Searchbar = () => {
         setOutput(output=>[...output,val])
       }
     })
-    
   },[input])
     return (
     
@@ -31,13 +32,22 @@ const Searchbar = () => {
         <input onChange={(e)=>setInput(e.target.value)} type="text" placeholder='Search' />
       </div>
   
-        <div className="oputput">
-          {output.map(item=>{
-            return(
-              <p>{item.country}</p>
-            )
-          })}
-        </div>
+        
+      <div className="output">
+            {data.map((item,index)=>{
+              return(
+                <ul className="ul-list">
+                   
+                  <li key={index} className='list' >
+                    <a href="https://en.wikipedia.org/wiki/austria" className='link'>
+                      {item.country}
+                    </a>
+                    
+                  </li>
+                </ul>
+              )
+            })}
+            </div>
       
   
      </>
